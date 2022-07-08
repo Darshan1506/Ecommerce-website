@@ -8,8 +8,9 @@ import ReactStars from "react-rating-stars-component"
 import ReviewCard from "./ReviewCard.js"
 import Loader from '../layout/Loader/Loader'
 import { useAlert } from 'react-alert';
+import MetaData from '../layout/MetaData';
 
-const ProductDetails = ({match}) => {
+const ProductDetails = () => {
     const dispatch = useDispatch();
     const alert = useAlert();
     const { id } = useParams();
@@ -35,6 +36,7 @@ const ProductDetails = ({match}) => {
     <Fragment>
         {loading ? <Loader/>: (
             <Fragment>
+                <MetaData title={`${product.name}--SHOPWITHME`}/>
             <div className='ProductDetails'>
                 <div>
                     <div  style={{width: '100%'}}>

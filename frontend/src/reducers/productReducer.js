@@ -10,7 +10,10 @@ export const productReducer = (state = {products :[]} , action)=>{
             return {
                 loading:false,
                 products:action.payload.products,
-                productsCount:action.payload.productsCounts
+                productsCount:action.payload.productsCount,
+                resultPerPage:action.payload.resultPerPage,
+                fliteredProductsCount:action.payload.fliteredProductsCount,
+                
             }
         case ALL_PRODUCT_FAIL:
                 return {
