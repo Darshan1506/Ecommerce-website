@@ -1,7 +1,6 @@
 import React from 'react'
 import {ReactNavbar} from "overlay-navbar"
 import logo from "../../../images/logo.png"
-import { BsLockFill, BsUnlock } from "react-icons/bs"
 const Header = () => {
   return (
     <ReactNavbar

@@ -71,7 +71,7 @@ const LoginSignUp = ({ history, location }) => {
       if (isAuthenticated) {
         navigate("/account")
       }
-    }, [dispatch, error, alert, history, isAuthenticated]);
+    }, [dispatch, error, alert, history, isAuthenticated,navigate]);
   
     const switchTabs = (e, tab) => {
       if (tab === "login") {
