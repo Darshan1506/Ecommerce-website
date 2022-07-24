@@ -10,9 +10,12 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { useAlert } from 'react-alert'
 import { logout } from '../../../actions/userAction'
-
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart"
+import { useSelector } from 'react-redux'
 
 const UserOptions = ({user}) => {
+
+  const {cartItems} = useSelector((state)=>state.cart)
 
     const navigate = useNavigate()
     const alert= useAlert()
@@ -23,6 +26,8 @@ const UserOptions = ({user}) => {
     const options = [
         {icon:<ListAltIcon/>,name:"Orders",func:orders},
         {icon:<PersonIcon/>,name:"Profile",func:account},
+        {icon:<ShoppingCartIcon style={{color : cartItems.length>0 ? "tomato" : "unset"  }}/>,name:`Cart(${cartItems.length})`,func:cart},
+
         {icon:<ExitToAppIcon/>,name:"Logout",func:logoutUser},
     ];
 
@@ -40,10 +45,14 @@ const UserOptions = ({user}) => {
     function account (){
         navigate("/account")
     }
+    function cart (){
+      navigate("/cart")
+  }
     function logoutUser (){
         dispatch(logout())
         alert.success("Logout Successfully")
     }
+
 
   return (
     <Fragment>
@@ -65,7 +74,7 @@ const UserOptions = ({user}) => {
         }
       >
             {options.map((item)=>(
-                <SpeedDialAction key={item.name} icon={item.icon} tooltipTitle={item.name} onClick={item.func} />
+                <SpeedDialAction key={item.name} icon={item.icon} tooltipTitle={item.name} onClick={item.func} tooltipOpen={window.innerWidth <= 600 ? true : false}/>
             ))}
 
         </SpeedDial>
