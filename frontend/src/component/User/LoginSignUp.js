@@ -1,5 +1,5 @@
 import React, { Fragment ,useRef, useState,useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import Loader from '../layout/Loader/Loader'
 import "./LoginSignUp.css"
 import MailOutlineIcon from "@material-ui/icons/MailOutline"
@@ -11,7 +11,7 @@ import { useAlert } from 'react-alert'
 import { useNavigate } from 'react-router-dom';
 
 
-const LoginSignUp = ({ history, location }) => {
+const LoginSignUp = () => {
     const dispatch = useDispatch();
     const alert = useAlert();
     const navigate = useNavigate();
@@ -21,6 +21,7 @@ const LoginSignUp = ({ history, location }) => {
     const switcherTab = useRef(null);
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
+    const location = useLocation();
   
     const [user, setUser] = useState({ name: "",email: "",password: "",});
   
@@ -62,16 +63,19 @@ const LoginSignUp = ({ history, location }) => {
       }
     };
   
-  
+
+    const redirect = location.search ? location.search.split("=")[1] : "/account"; 
+    console.log(location);
     useEffect(() => {
       if (error) {
         alert.error(error);
         dispatch(clearErrors());
       }
       if (isAuthenticated) {
-        navigate("/account")
+        // navigate("/account")
+        navigate(redirect)
       }
-    }, [dispatch, error, alert, history, isAuthenticated,navigate]);
+    }, [dispatch, error, alert,redirect, isAuthenticated,navigate]);
   
     const switchTabs = (e, tab) => {
       if (tab === "login") {
