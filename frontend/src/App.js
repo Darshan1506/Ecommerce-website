@@ -27,6 +27,8 @@ import Payment from './component/Cart/Payment';
 import {loadStripe} from "@stripe/stripe-js";
 import {Elements} from "@stripe/react-stripe-js";
 import OrderSuccess from './component/Cart/OrderSuccess';
+import MyOrders from './component/Order/MyOrders';
+import OrderDetails from './component/Order/OrderDetails';
 
 
 
@@ -77,6 +79,8 @@ function App() {
         )}
 
         <Route path='/success' element={<ProtectedRoute isAuthenticated={isAuthenticated}><OrderSuccess/></ProtectedRoute>} />
+        <Route path='/orders' element={<ProtectedRoute isAuthenticated={isAuthenticated}><MyOrders/></ProtectedRoute>} />
+        <Route path='/order/:id' element={<ProtectedRoute isAuthenticated={isAuthenticated}><OrderDetails/></ProtectedRoute>} />
 
 
       </Routes>

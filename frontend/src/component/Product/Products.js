@@ -11,6 +11,7 @@ import Typography  from '@material-ui/core/Typography'
 import { useAlert } from 'react-alert'
 import MetaData from '../layout/MetaData'
 
+
 const categories = [
   "laptop",
   "footwear",

@@ -1,6 +1,6 @@
-import React, {  Fragment } from 'react'
+import React from 'react'
 // import { useSelector } from 'react-redux'
-import { Navigate, Route } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 
 // const ProtectedRoute = ({element : Element, ...rest}) => {
 //     const {loading,isAuthenticated,user} = useSelector((state)=>state.user)
@@ -23,7 +23,7 @@ import { Navigate, Route } from 'react-router-dom'
 
 const ProtectedRoute = ({children , isAuthenticated}) => {
     // const {loading} = useSelector((state)=>state.user)
-    if(!isAuthenticated){
+    if(isAuthenticated === false ){  //loading === false
         return <Navigate to='/login' replace/>
     }
     return children;

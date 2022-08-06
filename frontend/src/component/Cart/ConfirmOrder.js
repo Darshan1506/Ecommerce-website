@@ -9,7 +9,7 @@ const ConfirmOrder = () => {
     const navigate = useNavigate()
 
     const {shippingInfo , cartItems } = useSelector((state)=> state.cart);
-    const {user} = useSelector((state)=>state.user);
+    const { user } = useSelector((state)=>state.user);
 
 
     const subtotal = cartItems.reduce(

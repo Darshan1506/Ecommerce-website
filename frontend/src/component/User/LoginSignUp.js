@@ -64,9 +64,7 @@ const LoginSignUp = () => {
     };
   
 
-    const redirect = location.search ? location.search.split("=")[1] : "/account"; 
-    console.log(location);
-    useEffect(() => {
+    const redirect = location.search ? location.search.split("=")[1] : "/account";    useEffect(() => {
       if (error) {
         alert.error(error);
         dispatch(clearErrors());
@@ -74,6 +72,7 @@ const LoginSignUp = () => {
       if (isAuthenticated) {
         // navigate("/account")
         navigate(redirect)
+        // Navigate(redirect)
       }
     }, [dispatch, error, alert,redirect, isAuthenticated,navigate]);
   
