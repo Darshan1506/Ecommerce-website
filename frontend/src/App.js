@@ -29,6 +29,10 @@ import {Elements} from "@stripe/react-stripe-js";
 import OrderSuccess from './component/Cart/OrderSuccess';
 import MyOrders from './component/Order/MyOrders';
 import OrderDetails from './component/Order/OrderDetails';
+import Dashboard from './component/Admin/Dashboard';
+import ProductList from './component/Admin/ProductList';
+import NewProduct from './component/Admin/NewProduct';
+import UpdateProduct from './component/Admin/UpdateProduct';
 
 
 
@@ -81,6 +85,10 @@ function App() {
         <Route path='/success' element={<ProtectedRoute isAuthenticated={isAuthenticated}><OrderSuccess/></ProtectedRoute>} />
         <Route path='/orders' element={<ProtectedRoute isAuthenticated={isAuthenticated}><MyOrders/></ProtectedRoute>} />
         <Route path='/order/:id' element={<ProtectedRoute isAuthenticated={isAuthenticated}><OrderDetails/></ProtectedRoute>} />
+        <Route path='/admin/dashboard' element={<ProtectedRoute isAdmin={true} isAuthenticated={isAuthenticated}><Dashboard/></ProtectedRoute>} />
+        <Route path='/admin/products' element={<ProtectedRoute isAdmin={true} isAuthenticated={isAuthenticated}><ProductList/></ProtectedRoute>} />
+        <Route path='/admin/product' element={<ProtectedRoute isAdmin={true} isAuthenticated={isAuthenticated}><NewProduct/></ProtectedRoute>} />
+        <Route path='/admin/product/:id' element={<ProtectedRoute isAdmin={true} isAuthenticated={isAuthenticated}><UpdateProduct/></ProtectedRoute>} />
 
 
       </Routes>
