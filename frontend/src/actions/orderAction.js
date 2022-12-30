@@ -1,3 +1,4 @@
+import instance from "../instace";
 import {
     CREATE_ORDER_FAIL,
     CREATE_ORDER_REQUEST,
@@ -22,7 +23,7 @@ import {
     ALL_ORDERS_SUCCESS
 } from "../constants/orderConstants";
 
-import axios from "axios";
+// import instance from "instance";
 
 // Create Order
 
@@ -35,7 +36,7 @@ export const createOrder = (order) => async (dispatch) => {
           "Content-Type": "application/json",
         },
       };
-      const { data } = await axios.post("/api/v1/order/new", order, config);
+      const { data } = await instance.post("/api/v1/order/new", order, config);
       dispatch({ type: CREATE_ORDER_SUCCESS, payload: data });
     } catch (error) {
       dispatch({
@@ -52,7 +53,7 @@ export const createOrder = (order) => async (dispatch) => {
     try {
       dispatch({ type: MY_ORDERS_REQUEST });
   
-      const { data } = await axios.get("/api/v1/orders/me");
+      const { data } = await instance.get("/api/v1/orders/me");
       dispatch({ type: MY_ORDERS_SUCCESS, payload: data.orders });
     } catch (error) {
       dispatch({
@@ -67,7 +68,7 @@ export const createOrder = (order) => async (dispatch) => {
     try {
       dispatch({ type: ALL_ORDERS_REQUEST });
   
-      const { data } = await axios.get("/api/v1/admin/orders");
+      const { data } = await instance.get("/api/v1/admin/orders");
       dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
     } catch (error) {
       dispatch({
@@ -88,7 +89,7 @@ export const createOrder = (order) => async (dispatch) => {
           "Content-Type": "application/json",
         },
       };
-      const { data } = await axios.put(`/api/v1/admin/order/${id}`, order, config);
+      const { data } = await instance.put(`/api/v1/admin/order/${id}`, order, config);
       dispatch({ type: UPDATE_ORDERS_SUCCESS, payload: data.success });
     } catch (error) {
       dispatch({
@@ -103,7 +104,7 @@ export const createOrder = (order) => async (dispatch) => {
     try {
       dispatch({ type: DELETE_ORDERS_REQUEST });
   
-      const { data } = await axios.delete(`/api/v1/admin/order/${id}`);
+      const { data } = await instance.delete(`/api/v1/admin/order/${id}`);
       dispatch({ type: DELETE_ORDERS_SUCCESS, payload: data.success });
     } catch (error) {
       dispatch({
@@ -118,7 +119,7 @@ export const createOrder = (order) => async (dispatch) => {
     try {
       dispatch({ type: ORDER_DETAILS_REQUEST });
   
-      const { data } = await axios.get(`/api/v1/order/${id}`);
+      const { data } = await instance.get(`/api/v1/order/${id}`);
       dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data.order });
     } catch (error) {
       dispatch({

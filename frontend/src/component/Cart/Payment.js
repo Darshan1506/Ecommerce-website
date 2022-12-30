@@ -5,13 +5,14 @@ import MetaData from '../layout/MetaData'
 import { Typography } from '@material-ui/core'
 import { useAlert } from 'react-alert'
 import { CardNumberElement , CardCvcElement ,CardExpiryElement , useStripe ,useElements} from "@stripe/react-stripe-js"
-import axios from 'axios'
+import axios from 'axios';
 import "./payment.css";
 import CreditCardIcon from "@material-ui/icons/CreditCard"
 import EventIcon from "@material-ui/icons/Event"
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import { useNavigate } from 'react-router-dom'
 import { clearErrors , createOrder } from '../../actions/orderAction'
+import instance from '../../instace'
 
 
 const Payment = () => {
@@ -54,7 +55,7 @@ const Payment = () => {
               "Content-Type": "application/json",
             },
           };
-          const { data } = await axios.post(
+          const { data } = await instance.post(
             "/api/v1/payment/process",
             paymentData,
             config
